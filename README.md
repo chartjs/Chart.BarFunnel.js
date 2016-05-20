@@ -1,4 +1,4 @@
-# Chart.Smith.js
+# Chart.BarFunnel.js
 
 Provides a Bar Funnel Chart for use with [Chart.js](http://www.chartjs.org)
 
