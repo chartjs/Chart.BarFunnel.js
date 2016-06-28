@@ -160,21 +160,22 @@
 					if(rectangleElementOptions.stepLabel.display && (index != 0)) {
 						var label = (dataset.data[index] / dataset.data[0]) * 100;
 
-						// Draw Step Label
-						ctx.font = vm.stepLabelFontSize + "px " + options.defaultFontFamily;
-						ctx.fillStyle = vm.stepLabelColor;
-						ctx.textAlign = "center";
-						ctx.fillText(label.toFixed(0) + "%", vm.x, vm.y - vm.stepLabelFontSize);
+						if (dataset.data[index] > 0) {
+							// Draw Step Label
+							ctx.font = vm.stepLabelFontSize + "px " + options.defaultFontFamily;
+							ctx.fillStyle = vm.stepLabelColor;
+							ctx.textAlign = "center";
+							ctx.fillText(label.toFixed(0) + "%", vm.x, vm.y - vm.stepLabelFontSize);
+						}
 					}
 
 					if (chartOptions.region.display && (index < meta.data.length - 1)) {
 						var nextVm = meta.data[index + 1]._view;
-						var nextModel = meta.data[index + 1]._model;
 
 						var regionCorners = [
 							[vm.x + halfWidth, top],
-							[nextModel.x - halfWidth, nextVm.base - (nextVm.base - nextVm.y)],
-							[nextModel.x - halfWidth, nextVm.base],
+							[nextVm.x - halfWidth, nextVm.base - (nextVm.base - nextVm.y - 1)],
+							[nextVm.x - halfWidth, nextVm.base],
 							[vm.x + halfWidth, vm.base]
 						];
 
