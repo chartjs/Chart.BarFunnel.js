@@ -38,6 +38,10 @@ new Chart({
 });
 ```
 
+## Example
+![BarFunnel Example Image]
+(https://github.com/chartjs/Chart.BarFunnel.js/blob/master/barfunnel.png)
+
 ## License
 
 Chart.BarFunnel.js is available under the [MIT license](http://opensource.org/licenses/MIT).
