@@ -6,7 +6,7 @@
   "main": "src/chart.barfunnel.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/chartjs/Chart.Zoom.js.git"
+    "url": "https://github.com/chartjs/Chart.BarFunnel.js.git"
   },
   "devDependencies": {
     "browserify": "^13.0.0",
