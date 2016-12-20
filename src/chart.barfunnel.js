@@ -62,6 +62,7 @@
 			var rectangleElementOptions = this.chart.options.elements.rectangle;
 			var custom = rectangle.custom || {};
 			var dataset = this.getDataset();
+      var ruler = this.getRuler(this.index);
 
 			helpers.extend(rectangle, {
 				// Utility
@@ -74,7 +75,7 @@
 
 				// Desired view properties
 				_model: {
-					x: this.calculateBarX(index, this.index),
+					x: this.calculateBarX(index, this.index, ruler),
 					y: reset ? yScalePoint : this.calculateBarY(index, this.index),
 
 					// Tooltip
@@ -83,7 +84,7 @@
 
 					// Appearance
 					base: reset ? yScalePoint : this.calculateBarBase(this.index, index),
-					width: this.calculateBarWidth(index),
+					width: this.calculateBarWidth(ruler),
 					backgroundColor: custom.backgroundColor ? custom.backgroundColor : helpers.getValueAtIndexOrDefault(dataset.backgroundColor, index, rectangleElementOptions.backgroundColor),
 					borderSkipped: custom.borderSkipped ? custom.borderSkipped : rectangleElementOptions.borderSkipped,
 					borderColor: custom.borderColor ? custom.borderColor : helpers.getValueAtIndexOrDefault(dataset.borderColor, index, rectangleElementOptions.borderColor),

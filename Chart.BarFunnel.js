@@ -5,7 +5,7 @@
  *
  * Copyright 2016 Jorge Conde
  * Released under the MIT license
- * https://github.com/chartjs/Chart.BarFunnel.js/blob/master/LICENSE.md
+ * https://github.com/chartjs/Chart.Zoom.js/blob/master/LICENSE.md
  */
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
 (function(Chart) {
@@ -72,6 +72,7 @@
 			var rectangleElementOptions = this.chart.options.elements.rectangle;
 			var custom = rectangle.custom || {};
 			var dataset = this.getDataset();
+      var ruler = this.getRuler(this.index);
 
 			helpers.extend(rectangle, {
 				// Utility
@@ -84,7 +85,7 @@
 
 				// Desired view properties
 				_model: {
-					x: this.calculateBarX(index, this.index),
+					x: this.calculateBarX(index, this.index, ruler),
 					y: reset ? yScalePoint : this.calculateBarY(index, this.index),
 
 					// Tooltip
@@ -93,7 +94,7 @@
 
 					// Appearance
 					base: reset ? yScalePoint : this.calculateBarBase(this.index, index),
-					width: this.calculateBarWidth(index),
+					width: this.calculateBarWidth(ruler),
 					backgroundColor: custom.backgroundColor ? custom.backgroundColor : helpers.getValueAtIndexOrDefault(dataset.backgroundColor, index, rectangleElementOptions.backgroundColor),
 					borderSkipped: custom.borderSkipped ? custom.borderSkipped : rectangleElementOptions.borderSkipped,
 					borderColor: custom.borderColor ? custom.borderColor : helpers.getValueAtIndexOrDefault(dataset.borderColor, index, rectangleElementOptions.borderColor),
