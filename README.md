@@ -7,7 +7,7 @@ Provides a Bar Funnel Chart for use with [Chart.js](http://www.chartjs.org)
 To create a Bar Funnel Chart, include `Chart.BarFunnel.js` after `Chart.js` and then create the chart by setting the `type` attribute to `'barFunnel'`
 
 ```javascript
-var mySmithChart = new Chart({
+var chart = new Chart({
 	type: 'barFunnel',
 	data: dataObject
 });
